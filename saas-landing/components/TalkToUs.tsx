@@ -117,7 +117,7 @@ export default function TalkToUsSection() {
               "
             >
               <span className="text-[15px]">✉</span>
-              hello@youragency.com
+              [EMAIL_ADDRESS]
             </a>
 
             {/* WhatsApp */}

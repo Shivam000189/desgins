@@ -10,9 +10,8 @@ const footerLinks = {
     { label: "Contact", href: "/contact" },
   ],
   social: [
-    { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" },
-    { label: "GitHub", href: "#" },
+    { label: "PortFolio", href: "https://portfolio-vxrf.vercel.app/" },
+    { label: "GitHub", href: "https://github.com/Shivam000189/" },
   ],
 };
 

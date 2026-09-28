@@ -20,7 +20,7 @@ const services: Service[] = [
     location: "Strategy",
     description:
       "We build identities around what makes your business different — not just something that looks good.",
-    image: "/workImages/Img-05.png",
+    image: "/brand-01.png",
   },
   {
     id: "02",
