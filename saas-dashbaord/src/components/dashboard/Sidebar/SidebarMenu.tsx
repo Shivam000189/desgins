@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   LayoutDashboard,
@@ -16,6 +17,7 @@ import {
 interface MenuItem {
   label: string;
   icon: React.ElementType;
+  href: string;
   badge?: string;
   isLogout?: boolean;
 }
@@ -24,23 +26,28 @@ const mainMenu: MenuItem[] = [
   {
     label: "Dashboard",
     icon: LayoutDashboard,
+    href: "/dashboard",
   },
   {
     label: "Tasks",
     icon: ListTodo,
+    href: "/tasks",
     badge: "12+",
   },
   {
     label: "Calendar",
     icon: CalendarDays,
+    href: "/calendar",
   },
   {
     label: "Analytics",
     icon: BarChart3,
+    href: "/analytics",
   },
   {
     label: "Team",
     icon: UsersRound,
+    href: "/team",
   },
 ];
 
@@ -48,14 +55,17 @@ const generalMenu: MenuItem[] = [
   {
     label: "Settings",
     icon: Settings,
+    href: "/settings",
   },
   {
     label: "Help",
     icon: CircleHelp,
+    href: "#help",
   },
   {
     label: "Logout",
     icon: LogOut,
+    href: "#logout",
     isLogout: true,
   },
 ];
@@ -64,25 +74,22 @@ function MenuItemComponent({
   item,
   index,
   active = false,
-  onClick,
 }: {
   item: MenuItem;
   index: number;
   active?: boolean;
-  onClick: () => void;
 }) {
   const Icon = item.icon;
   const prefersReducedMotion = useReducedMotion();
-
   const isLogout = item.isLogout;
 
-  return (
-    <motion.button
+  const content = (
+    <motion.div
       initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{
         duration: 0.3,
-        delay: prefersReducedMotion ? 0 : 0.06 + index * 0.03,
+        delay: prefersReducedMotion ? 0 : 0.04 + index * 0.02,
         ease: "easeOut",
       }}
       whileHover={{
@@ -91,7 +98,6 @@ function MenuItemComponent({
       whileTap={{
         scale: 0.98,
       }}
-      onClick={onClick}
       className={`
         group
         relative
@@ -108,7 +114,6 @@ function MenuItemComponent({
         focus-visible:outline-none
         focus-visible:ring-2
         focus-visible:ring-[var(--color-primary)]
-
         ${
           active
             ? "bg-[var(--color-primary-light)] text-[var(--color-primary-darker)] font-semibold"
@@ -119,11 +124,9 @@ function MenuItemComponent({
       `}
       aria-current={active ? "page" : undefined}
     >
-      {/* Active indicator */}
-
+      {/* Active indicator bar */}
       {active && (
-        <motion.span
-          layoutId="sidebar-active"
+        <span
           className="
             absolute
             -left-3.5
@@ -134,11 +137,6 @@ function MenuItemComponent({
             rounded-r-full
             bg-[var(--color-primary)]
           "
-          transition={{
-            type: "spring",
-            stiffness: 450,
-            damping: 32,
-          }}
         />
       )}
 
@@ -160,9 +158,7 @@ function MenuItemComponent({
         `}
       />
 
-      <span className="flex-1 text-[13px]">
-        {item.label}
-      </span>
+      <span className="flex-1 text-[13px]">{item.label}</span>
 
       {item.badge && (
         <span
@@ -183,17 +179,48 @@ function MenuItemComponent({
           {item.badge}
         </span>
       )}
-    </motion.button>
+    </motion.div>
+  );
+
+  if (item.href.startsWith("/")) {
+    return (
+      <Link href={item.href} className="block w-full">
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        if (item.isLogout) {
+          alert("Logged out successfully.");
+        }
+      }}
+      className="block w-full text-left"
+    >
+      {content}
+    </button>
   );
 }
 
 export default function SidebarMenu() {
-  const [activeItem, setActiveItem] = useState("Dashboard");
+  const pathname = usePathname();
+
+  const isItemActive = (href: string) => {
+    if (href === "/dashboard") {
+      return pathname === "/" || pathname === "/dashboard";
+    }
+    if (href.startsWith("/")) {
+      return pathname === href || pathname.startsWith(href + "/");
+    }
+    return false;
+  };
 
   return (
     <nav className="flex flex-col gap-6" aria-label="Main Navigation">
       {/* MENU */}
-
       <div>
         <p className="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-light)]">
           Menu
@@ -205,15 +232,13 @@ export default function SidebarMenu() {
               key={item.label}
               item={item}
               index={index}
-              active={activeItem === item.label}
-              onClick={() => setActiveItem(item.label)}
+              active={isItemActive(item.href)}
             />
           ))}
         </div>
       </div>
 
       {/* GENERAL */}
-
       <div>
         <p className="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-light)]">
           General
@@ -225,8 +250,7 @@ export default function SidebarMenu() {
               key={item.label}
               item={item}
               index={index + mainMenu.length}
-              active={activeItem === item.label}
-              onClick={() => setActiveItem(item.label)}
+              active={isItemActive(item.href)}
             />
           ))}
         </div>
