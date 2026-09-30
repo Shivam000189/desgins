@@ -1,0 +1,6 @@
+{
+  "name": "Wispr Flow Notetaker",
+  "description": "Meeting notes that get the details right. Capture hard-to-spell words, uncommon names, and action items in real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
