@@ -55,7 +55,7 @@ export default function IntegrationsSection() {
               </span>
             </div>
             <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
-              Authenticate requests to the Donezo programmatic webhooks and endpoints.
+              Authenticate requests to the Shivam programmatic webhooks and endpoints.
             </p>
           </div>
 

@@ -142,7 +142,7 @@ export default function NotificationsSection({
       <Card variant="default" className="p-5 sm:p-6">
         <CardHeader
           title="Push & In-App Notifications"
-          subtitle="Real-time alerts displayed while you work in Donezo"
+          subtitle="Real-time alerts displayed while you work in Shivam"
           icon={
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
               <Smartphone size={16} strokeWidth={2.2} />

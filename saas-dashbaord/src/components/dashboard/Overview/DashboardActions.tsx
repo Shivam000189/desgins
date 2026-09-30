@@ -1,28 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  Plus,
-  Upload,
-  Loader2,
-  Check,
-} from "lucide-react";
+import { Plus, FolderPlus } from "lucide-react";
 
-export default function DashboardActions() {
-  const [isAdding, setIsAdding] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
+interface DashboardActionsProps {
+  onNewTask?: () => void;
+  onAddProject?: () => void;
+}
+
+export default function DashboardActions({
+  onNewTask,
+  onAddProject,
+}: DashboardActionsProps) {
   const prefersReducedMotion = useReducedMotion();
-
-  const handleAddProject = () => {
-    if (isAdding) return;
-    setIsAdding(true);
-    setTimeout(() => {
-      setIsAdding(false);
-      setIsAdded(true);
-      setTimeout(() => setIsAdded(false), 2000);
-    }, 900);
-  };
 
   return (
     <motion.div
@@ -33,10 +23,9 @@ export default function DashboardActions() {
         delay: 0.1,
         ease: "easeOut",
       }}
-      className="flex shrink-0 items-center gap-2"
+      className="flex flex-wrap items-center gap-2"
     >
-      {/* Import Data */}
-
+      {/* Add Project Button */}
       <motion.button
         whileHover={{
           y: prefersReducedMotion ? 0 : -1,
@@ -44,20 +33,21 @@ export default function DashboardActions() {
         whileTap={{
           scale: 0.98,
         }}
+        onClick={onAddProject}
         className="
           inline-flex
           h-[38px]
           items-center
-          gap-2
+          gap-1.5
           rounded-xl
           border
           border-[var(--color-border-light)]
           bg-white
           px-3.5
           text-[12px]
-          font-medium
+          font-semibold
           text-[var(--color-text-secondary)]
-          shadow-[0_1px_2px_rgba(23,26,22,0.02)]
+          shadow-xs
           transition-colors
           duration-200
           hover:border-[var(--color-primary)]
@@ -67,80 +57,45 @@ export default function DashboardActions() {
           focus-visible:ring-2
           focus-visible:ring-[var(--color-primary)]
         "
-        aria-label="Import project data"
+        aria-label="Add new project"
       >
-        <Upload
-          size={14}
-          strokeWidth={2}
-        />
-
-        <span className="hidden sm:inline">
-          Import Data
-        </span>
+        <FolderPlus size={15} strokeWidth={2.2} className="text-[var(--color-primary)]" />
+        <span>Add Project</span>
       </motion.button>
 
-      {/* Add Project */}
-
+      {/* New Task Button */}
       <motion.button
         whileHover={{
           y: prefersReducedMotion ? 0 : -1,
-          backgroundColor: "#4F6B42",
         }}
         whileTap={{
           scale: 0.98,
         }}
-        onClick={handleAddProject}
-        disabled={isAdding}
+        onClick={onNewTask}
         className="
           inline-flex
           h-[38px]
           items-center
-          gap-2
+          gap-1.5
           rounded-xl
-          bg-[var(--color-primary)]
+          bg-[var(--color-primary-dark)]
           px-4
           text-[12px]
-          font-medium
+          font-semibold
           text-white
           shadow-[0_3px_12px_rgba(100,131,84,0.22)]
           transition-all
           duration-200
-          hover:bg-[var(--color-primary-dark)]
+          hover:bg-[var(--color-primary)]
           focus-visible:outline-none
           focus-visible:ring-2
           focus-visible:ring-[var(--color-primary)]
           focus-visible:ring-offset-2
-          disabled:cursor-not-allowed
-          disabled:opacity-85
         "
-        aria-label="Add new project"
+        aria-label="Create new task"
       >
-        {isAdding ? (
-          <>
-            <Loader2
-              size={14}
-              strokeWidth={2.2}
-              className="animate-spin"
-            />
-            <span>Creating...</span>
-          </>
-        ) : isAdded ? (
-          <>
-            <Check
-              size={14}
-              strokeWidth={2.5}
-            />
-            <span>Created!</span>
-          </>
-        ) : (
-          <>
-            <Plus
-              size={15}
-              strokeWidth={2.2}
-            />
-            <span>Add Project</span>
-          </>
-        )}
+        <Plus size={15} strokeWidth={2.2} />
+        <span>New Task</span>
       </motion.button>
     </motion.div>
   );

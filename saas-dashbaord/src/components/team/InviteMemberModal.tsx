@@ -136,7 +136,7 @@ export default function InviteMemberModal({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="e.g. maya@donezo.io"
+                placeholder="e.g. maya@shivam.io"
                 className="h-9 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-background-soft)] px-3 text-xs text-[var(--color-text-primary)] focus:bg-white focus:border-[var(--color-primary)] focus-visible:outline-none"
               />
             </div>

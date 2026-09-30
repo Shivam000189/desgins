@@ -81,7 +81,7 @@ export const initialTeamMembers: TeamMember[] = [
     name: "Shivam Sharma",
     role: "Project Lead",
     status: "Online",
-    email: "shivam@donezo.io",
+    email: "shivam@shivam.io",
   },
   {
     id: "tm2",
@@ -89,7 +89,7 @@ export const initialTeamMembers: TeamMember[] = [
     name: "Alex Kumar",
     role: "UI/UX Designer",
     status: "Online",
-    email: "alex@donezo.io",
+    email: "alex@shivam.io",
   },
   {
     id: "tm3",
@@ -97,7 +97,7 @@ export const initialTeamMembers: TeamMember[] = [
     name: "Rahul Mehta",
     role: "Backend Developer",
     status: "Away",
-    email: "rahul@donezo.io",
+    email: "rahul@shivam.io",
   },
   {
     id: "tm4",
@@ -105,7 +105,7 @@ export const initialTeamMembers: TeamMember[] = [
     name: "Priya Kapoor",
     role: "Product Manager",
     status: "Online",
-    email: "priya@donezo.io",
+    email: "priya@shivam.io",
   },
 ];
 

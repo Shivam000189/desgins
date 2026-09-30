@@ -96,7 +96,7 @@ export default function NewTaskModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="relative w-full max-w-lg rounded-2xl border border-[var(--color-border-light)] bg-white p-5 shadow-2xl z-10"
+          className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-[var(--color-border-light)] bg-white p-5 shadow-2xl z-10"
         >
           {/* Header */}
           <div className="flex items-center justify-between border-b border-[var(--color-border-light)] pb-3">

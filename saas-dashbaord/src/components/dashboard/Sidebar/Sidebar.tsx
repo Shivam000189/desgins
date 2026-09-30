@@ -5,7 +5,6 @@ import { ChevronsUpDown } from "lucide-react";
 
 import Logo from "./Logo";
 import SidebarMenu from "./SidebarMenu";
-import MobileAppCard from "./MobileAppCard";
 
 export default function Sidebar() {
   return (
@@ -20,16 +19,12 @@ export default function Sidebar() {
         <SidebarMenu />
       </div>
 
-      <div className="mt-auto pt-5">
-        {/* Mobile App Card */}
-        <MobileAppCard />
-
+      <div className="mt-auto pt-4">
         {/* Workspace selector */}
         <motion.button
           whileHover={{ backgroundColor: "var(--color-background-soft)" }}
           whileTap={{ scale: 0.98 }}
           className="
-            mt-3
             flex
             w-full
             items-center
@@ -52,7 +47,7 @@ export default function Sidebar() {
           <div className="flex items-center gap-2 truncate">
             <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--color-primary)]" />
             <span className="truncate text-[11px] font-semibold text-[var(--color-text-primary)]">
-              Donezo Pro
+              Shivam Pro
             </span>
           </div>
 

@@ -1,11 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import DashboardIntro from "./DashboardIntro";
 import DashboardActions from "./DashboardActions";
 
-export default function DashboardOverview() {
+interface DashboardOverviewProps {
+  onNewTask?: () => void;
+  onAddProject?: () => void;
+}
+
+export default function DashboardOverview({
+  onNewTask,
+  onAddProject,
+}: DashboardOverviewProps) {
   return (
     <motion.section
       initial="hidden"
@@ -29,7 +36,7 @@ export default function DashboardOverview() {
     >
       <DashboardIntro />
 
-      <DashboardActions />
+      <DashboardActions onNewTask={onNewTask} onAddProject={onAddProject} />
     </motion.section>
   );
 }

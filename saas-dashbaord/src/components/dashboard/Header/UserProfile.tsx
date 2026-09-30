@@ -22,7 +22,7 @@ export default function UserProfile({
   name = "Shivam Sharma",
   role = "Administrator",
   initials = "SS",
-  email = "shivam@donezo.com",
+  email = "shivam@shivam.io",
 }: UserProfileProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);

@@ -9,6 +9,7 @@ import {
   FolderOpen,
 } from "lucide-react";
 
+import Link from "next/link";
 import ProjectItem from "./ProjectItem";
 import { initialProjects } from "@/lib/dashboard/data";
 import type { Project } from "@/types/dashboard";
@@ -18,6 +19,8 @@ interface ProjectListProps {
   isLoading?: boolean;
   error?: string | null;
   onRetry?: () => void;
+  onNewTask?: () => void;
+  onAddProject?: () => void;
 }
 
 export default function ProjectList({
@@ -25,6 +28,8 @@ export default function ProjectList({
   isLoading = false,
   error = null,
   onRetry,
+  onNewTask,
+  onAddProject,
 }: ProjectListProps) {
   return (
     <motion.section
@@ -88,35 +93,53 @@ export default function ProjectList({
           </div>
         </div>
 
-        <motion.button
-          whileHover={{
-            x: 2,
-          }}
-          whileTap={{
-            scale: 0.97,
-          }}
-          className="
-            flex
-            items-center
-            gap-1
-            text-[11px]
-            font-medium
-            text-[var(--color-primary)]
-            hover:text-[var(--color-primary-dark)]
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[var(--color-primary)]
-            rounded-md
-            px-1
-          "
-        >
-          <span>View all</span>
+        <div className="flex items-center gap-2">
+          {onAddProject && (
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onAddProject}
+              className="inline-flex items-center gap-1 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-background-soft)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+            >
+              <Plus size={12} strokeWidth={2.2} />
+              <span>Add Project</span>
+            </motion.button>
+          )}
 
-          <ArrowUpRight
-            size={13}
-            strokeWidth={2}
-          />
-        </motion.button>
+          {onNewTask && (
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onNewTask}
+              className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-background-soft)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+            >
+              <Plus size={12} strokeWidth={2.2} />
+              <span>New Task</span>
+            </motion.button>
+          )}
+
+          <Link
+            href="/tasks"
+            className="
+              flex
+              items-center
+              gap-1
+              text-[11px]
+              font-medium
+              text-[var(--color-primary)]
+              hover:text-[var(--color-primary-dark)]
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-[var(--color-primary)]
+              rounded-md
+              px-1
+              transition-colors
+            "
+          >
+            <span>View all</span>
+            <ArrowUpRight size={13} strokeWidth={2} />
+          </Link>
+        </div>
       </div>
 
       {/* States: Loading / Error / Empty / List */}

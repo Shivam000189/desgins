@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Donezo - Modern SaaS Project Dashboard",
+  title: "Shivam - Modern SaaS Project Dashboard",
   description: "Organized project management, analytics and team collaboration dashboard",
 };
 

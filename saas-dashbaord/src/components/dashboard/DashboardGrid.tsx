@@ -9,8 +9,19 @@ import ProjectList from "./Projects/ProjectList";
 import TeamCollaboration from "./Team/TeamCollaboration";
 import ProjectProgress from "./Progress/ProjectProgress";
 import TimeTracker from "./TimeTracker/TimeTracker";
+import type { Project } from "@/types/dashboard";
 
-export default function DashboardGrid() {
+interface DashboardGridProps {
+  onNewTask?: () => void;
+  onAddProject?: () => void;
+  projects?: Project[];
+}
+
+export default function DashboardGrid({
+  onNewTask,
+  onAddProject,
+  projects,
+}: DashboardGridProps) {
   return (
     <div className="space-y-4 sm:space-y-5">
       {/* =========================================
@@ -93,7 +104,11 @@ export default function DashboardGrid() {
         }}
         className="w-full min-w-0"
       >
-        <ProjectList />
+        <ProjectList
+          items={projects}
+          onNewTask={onNewTask}
+          onAddProject={onAddProject}
+        />
       </motion.div>
 
       {/* =========================================

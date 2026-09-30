@@ -9,7 +9,7 @@ import type {
 export const initialProfileSettings: UserProfileSettings = {
   name: "Shivam Sharma",
   username: "shivam_lead",
-  email: "shivam@donezo.io",
+  email: "shivam@shivam.io",
   role: "Lead Architect & Fullstack Engineer",
   bio: "Building high-performance SaaS applications, design systems, and financial analytics workflows.",
   timezone: "Pacific Time (US & Canada) - UTC-07:00",
@@ -18,8 +18,8 @@ export const initialProfileSettings: UserProfileSettings = {
 };
 
 export const initialWorkspaceSettings: WorkspaceSettings = {
-  workspaceName: "Donezo Pro",
-  slug: "donezo.io/workspace/donezo-pro",
+  workspaceName: "Shivam Pro",
+  slug: "shivam.io/workspace/shivam-pro",
   planName: "Pro Team Tier",
   billingAmount: "$49.00 / month",
   renewalDate: "Oct 24, 2026",

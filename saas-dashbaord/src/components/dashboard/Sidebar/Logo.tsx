@@ -18,7 +18,7 @@ export default function Logo() {
 
       <div className="flex items-center gap-1">
         <span className="text-[17px] font-bold tracking-tight text-[var(--color-text-primary)]">
-          Donezo
+          Shivam
         </span>
         <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" />
       </div>
