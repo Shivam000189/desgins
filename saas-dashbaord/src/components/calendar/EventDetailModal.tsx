@@ -55,7 +55,7 @@ export default function EventDetailModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 10 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="relative z-10 w-full max-w-lg rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-2xl"
+          className="relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-[var(--color-border)] bg-white p-5 sm:p-6 shadow-2xl"
         >
           {/* Top Bar with Badge and Close */}
           <div className="flex items-start justify-between">

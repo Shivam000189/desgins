@@ -38,8 +38,8 @@ export default function CalendarHeader({
           </p>
         </div>
 
-        <div className="mt-1 flex items-center gap-3">
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-3xl">
+        <div className="mt-1 flex flex-wrap items-center gap-2.5 sm:gap-3">
+          <h1 className="text-xl font-bold tracking-tight text-[var(--color-text-primary)] sm:text-2xl lg:text-3xl">
             {currentMonthName}
           </h1>
 

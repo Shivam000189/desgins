@@ -154,7 +154,7 @@ export default function CalendarAgendaView({
                     {/* Platform location */}
                     <span className="inline-flex items-center gap-1 text-xs text-[var(--color-text-secondary)]">
                       {getPlatformIcon(evt.platform)}
-                      <span className="truncate max-w-[140px]">{evt.platform}</span>
+                      <span className="truncate max-w-[110px] xs:max-w-[140px]">{evt.platform}</span>
                     </span>
 
                     {/* Attendees avatar pile */}

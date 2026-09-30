@@ -109,7 +109,7 @@ export default function DashboardLayout({
               flex-1
               overflow-x-hidden
               bg-[var(--color-background-soft)]
-              p-4
+              p-3.5
               sm:p-6
               lg:p-8
             "
