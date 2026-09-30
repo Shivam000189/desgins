@@ -65,55 +65,56 @@ export default function DashboardLayout({
 
   return (
     <MobileMenuContext.Provider value={{ isOpen, openMenu, closeMenu }}>
-      <div className="min-h-screen bg-[var(--color-background-soft)] p-2 sm:p-3.5 lg:p-5">
-        <div className="mx-auto flex min-h-[calc(100vh-16px)] sm:min-h-[calc(100vh-28px)] max-w-[1600px] overflow-hidden rounded-[18px] sm:rounded-[24px] border border-[var(--color-border-light)] bg-white shadow-[0_8px_36px_rgba(23,26,22,0.04)]">
-          {/* =========================================
-              DESKTOP SIDEBAR
-          ========================================= */}
+      <div className="min-h-screen w-full flex bg-[var(--color-background-soft)]">
+        {/* =========================================
+            DESKTOP SIDEBAR
+        ========================================= */}
 
-          <aside
+        <aside
+          className="
+            hidden
+            w-[224px]
+            xl:w-[240px]
+            shrink-0
+            border-r
+            border-[var(--color-border-light)]
+            bg-white
+            lg:flex
+            lg:flex-col
+            lg:sticky
+            lg:top-0
+            lg:h-screen
+            lg:overflow-y-auto
+          "
+        >
+          {sidebar}
+        </aside>
+
+        {/* =========================================
+            MAIN CONTENT AREA
+        ========================================= */}
+
+        <div className="flex min-w-0 flex-1 flex-col">
+          {/* HEADER */}
+
+          <header className="sticky top-0 z-30 h-[68px] shrink-0 border-b border-[#e2e7e0] bg-white">
+            {header}
+          </header>
+
+          {/* CONTENT */}
+
+          <main
             className="
-              hidden
-              w-[210px]
-              xl:w-[224px]
-              shrink-0
-              border-r
-              border-[var(--color-border-light)]
-              bg-white
-              lg:flex
-              lg:flex-col
+              min-w-0
+              flex-1
+              overflow-x-hidden
+              bg-[var(--color-background-soft)]
+              p-4
+              sm:p-6
+              lg:p-8
             "
           >
-            {sidebar}
-          </aside>
-
-          {/* =========================================
-              MAIN CONTENT AREA
-          ========================================= */}
-
-          <main className="flex min-w-0 flex-1 flex-col">
-            {/* HEADER */}
-
-            <header className="h-[68px] shrink-0 border-b border-[#e2e7e0] bg-white">
-              {header}
-            </header>
-
-            {/* CONTENT */}
-
-            <section
-              className="
-                min-w-0
-                flex-1
-                overflow-x-hidden
-                bg-[var(--color-background-soft)]
-                p-3.5
-                sm:p-5
-                lg:p-6
-                xl:p-7
-              "
-            >
-              {children}
-            </section>
+            {children}
           </main>
         </div>
 
